@@ -4,6 +4,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.
+    @user = User.new(user_params)
+    @user.save
+    render json: @user.token
+  end
+
+  private
+
+  def user_params
+    params.require(:).permit(:email, :password)
   end
 end
