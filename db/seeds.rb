@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-@user = User.find_or_initialize_by(
+@user = User.create!(
   name: 'rin',
   email: 'rin@ruby.com',
-  password: 'yayror',
 )
+@user.password = 'yayror'
 @user.save
