@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+@user = User.find_or_initialize_by(
+  name: 'rin',
+  email: 'rin@ruby.com',
+)
+@user.password =  'yayror'
+@user.save
