@@ -10,6 +10,7 @@
 @user = User.create!(
   name: 'rin',
   email: 'rin@ruby.com',
+  password_digest: 'yayror',
 )
-@user.password = 'yayror'
+
 @user.save
