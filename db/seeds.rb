@@ -10,6 +10,6 @@
 @user = User.find_or_initialize_by(
   name: 'rin',
   email: 'rin@ruby.com',
+  password: 'yayror',
 )
-@user.password =  'yayror'
 @user.save

@@ -1,17 +1,25 @@
 class UsersController < ApplicationController
   def index
-    @user = User.all
+    @users = User.all
+    render json: @users
   end
+
+  # def show
+  #   @user = User.find_by(user_id: params[:user_id])
+  #
+  # end
 
   def create
     @user = User.new(user_params)
     @user.save
-    render json: @user.token
+    render json: {
+      token: @user.token
+    }
   end
 
   private
 
   def user_params
-    params.require(:).permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 end
