@@ -1,21 +1,6 @@
 class SessionsController < ApplicationController
-  # def login
-  #
-  # end
-  #
-  #   user = User.find_by(email: params[:session][:email])
-  #   # パスワードの一致を検証
-  #   if user && user.authenticate(params[:session][:password])
-  #     session[:user_id] = user.id
-  #     render json: @current_user
-  #
-  #     user = User.find_by(email: params[:session][:email])
-  #     if user && user.authenticate(params[:session][:password])
-  #   else
-  #     render json:
-  #   end
-
-
+  skip_before_action :login_required
+  
   def login
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
@@ -27,23 +12,8 @@ class SessionsController < ApplicationController
     end
   end
 
-
-  # def login
-  #   @user = User.find_by(email: params[:session][:email])
-  #   return render status: 401 unless @user
-  #   if @user.authenticate(params[:session][:password])
-  #     session[:user_id] = user.id
-  #     render json: {
-  #       token: @user.token
-  #     }
-  #   else
-  #     render status: 401
-  #   end
-  # end
-
   def logout
     reset_session
   end
-
 
 end
