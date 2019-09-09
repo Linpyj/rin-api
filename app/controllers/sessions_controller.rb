@@ -18,8 +18,7 @@ class SessionsController < ApplicationController
 
   def login
     @user = User.find_by(email: params[:email])
-    return render status: 401 unless @user
-    if @user.authenticate(params[:password])
+    if @user&.authenticate(params[:password])
       render json: {
         token: @user.token
       }
@@ -28,12 +27,23 @@ class SessionsController < ApplicationController
     end
   end
 
+
+  # def login
+  #   @user = User.find_by(email: params[:session][:email])
+  #   return render status: 401 unless @user
+  #   if @user.authenticate(params[:session][:password])
+  #     session[:user_id] = user.id
+  #     render json: {
+  #       token: @user.token
+  #     }
+  #   else
+  #     render status: 401
+  #   end
+  # end
+
   def logout
     reset_session
   end
 
 
-
-  def logout
-  end
 end
