@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class Api::GroupsController < Api::ApplicationController
   def index
     @group = Group.all
   end
