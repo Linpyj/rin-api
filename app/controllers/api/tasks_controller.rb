@@ -14,9 +14,4 @@ class Api::TasksController < Api::ApplicationController
     render json: @task
   end
 
-  private
-
-  def task_params
-    params.require(:task).permit(:content, :detail)
-  end
 end
