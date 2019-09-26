@@ -1,11 +1,10 @@
 class Api::SessionsController < Api::ApplicationController
-  skip_before_action :login_required
+  skip_before_action :authenticate
 
   def login
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
       render json: {
-        token: @user.token,
         user: @user
       }
     else
