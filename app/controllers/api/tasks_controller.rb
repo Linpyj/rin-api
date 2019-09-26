@@ -1,24 +1,17 @@
 class Api::TasksController < Api::ApplicationController
+
   def index
-    @task = Task.all
-    render json: @task
+    @tasks = @current_user.tasks
+    render json: @tasks
   end
 
   def show
-    @task = Task.find_by(id: params[:id])
-    render json: @task
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = @current_user.tasks.create(content: params[:content], detail: params[:detail], user_id: @current_user.id)
     @task.save
     render json: @task
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

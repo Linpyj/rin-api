@@ -1,18 +1,16 @@
 class Api::ApplicationController < ApplicationController
-  include ActionController::Helpers
-  helper_method :current_user
-  before_action :login_required
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  before_action :authenticate
 
-  private
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+  def authenticate
+    authenticate_token || render(json: { error: :unauthorized }, status: 401)
   end
 
-  def login_required
-    render json: {
-        error: "Please loginnnnnnnnn!",
-        status: 405
-      }
+  def authenticate_token
+    authenticate_with_http_token do |token, options|
+      @current_user = User.find_by(token: token)
+      !!@current_user
+    end
   end
+
 end
