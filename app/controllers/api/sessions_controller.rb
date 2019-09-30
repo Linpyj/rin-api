@@ -4,6 +4,7 @@ class Api::SessionsController < Api::ApplicationController
   def login
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
+      session[:user_id] = @user.id
       render json: {
         user: @user,
         token: @user.token
