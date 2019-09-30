@@ -5,7 +5,8 @@ class Api::SessionsController < Api::ApplicationController
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
       render json: {
-        user: @user
+        user: @user,
+        token: @user.token
       }
     else
       render status: 401
