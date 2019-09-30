@@ -12,7 +12,6 @@ class Api::SessionsController < Api::ApplicationController
     else
       render status: 401
     end
-
   end
 
   def logout
