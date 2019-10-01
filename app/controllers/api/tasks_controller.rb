@@ -5,17 +5,6 @@ class Api::TasksController < Api::ApplicationController
     render json: @tasks
   end
 
-  #
-  # def index
-  #   salaries = Salary.where(user_id: @current_user.id)
-  #   if params[:year]
-  #     salaries = salaries.where(year: params[:year])
-  #   else
-  #     salaries = salaries.where(year: Time.now.year)
-  #   end
-  #   render json: salaries
-  # end
-
   def show
   end
 
