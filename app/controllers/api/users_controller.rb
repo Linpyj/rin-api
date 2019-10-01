@@ -10,16 +10,12 @@ class Api::UsersController < Api::ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(name: params[:name], email: params[:email], password: params[:password])
     @user.save
     render json: {
-      token: @user.token
+        user: @user,
+        token: @user.token
     }
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:email, :password)
-  end
 end
