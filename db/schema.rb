@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_083050) do
+ActiveRecord::Schema.define(version: 2019_10_03_044446) do
 
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_083050) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.integer "task_id"
+    t.boolean "is_manager", default: false
   end
 
 end
