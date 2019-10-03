@@ -1,0 +1,1 @@
+class Api::V1::Manager::UsersController < Api::V1::Manager::ApplicationController

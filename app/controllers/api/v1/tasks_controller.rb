@@ -1,4 +1,4 @@
-class Api::TasksController < Api::ApplicationController
+class Api::V1::TasksController < Api::V1::ApplicationController
 
   def index
     @tasks = Task.where(user_id: @current_user.id)
