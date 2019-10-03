@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/sessions/login'
       get '/sessions/logout'
-      resources :users
+      resources :user
       resources :tasks
       namespace :manager do
         resources :users

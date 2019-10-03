@@ -1,13 +1,4 @@
 class Api::V1::UsersController < Api::V1::ApplicationController
-  def index
-    @users = User.all
-    render json: @users
-  end
-
-  def show
-    @user = User.find_by(id: params[:id])
-    render json: @user
-  end
 
   def create
     @user = User.create(name: params[:name], email: params[:email], password: params[:password])
@@ -17,5 +8,6 @@ class Api::V1::UsersController < Api::V1::ApplicationController
         token: @user.token
     }
   end
+
 
 end
